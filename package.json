@@ -1,0 +1,25 @@
+{
+  "name": "rxx",
+  "version": "1.0.0",
+  "description": "simple demonstration of lodash vs rx vs bacon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhahne/rxx.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lhahne/rxx/issues"
+  },
+  "homepage": "https://github.com/lhahne/rxx#readme",
+  "dependencies": {
+    "baconjs": "^0.7.83",
+    "isomorphic-fetch": "^2.2.1",
+    "lodash": "^4.2.1",
+    "rx": "^4.0.7"
+  }
+}
