@@ -1,6 +1,5 @@
 'use strict'
 
-const _ = require('lodash')
 const rx = require('rx')
 
 const fetch = require('isomorphic-fetch')
@@ -14,11 +13,27 @@ const stationInfo = fromPromise(fetch(`http://rata.digitraffic.fi/api/v1/metadat
                   .filter(o => o.stationShortCode === station)
                   //.map(stations => _.find(stations, {stationShortCode: station}))
 
-fromPromise(fetch(`http://rata.digitraffic.fi/api/v1/live-trains?station=${station}`))
+const trainStationInfo = fromPromise(fetch(`http://rata.digitraffic.fi/api/v1/live-trains?station=${station}`))
   .flatMap(response => fromPromise(response.json()))
   .zip(stationInfo)
   .map(data => ({
     trains: data[0],
     station: data[1]
   }))
-  .subscribe(v => console.log(v))
+
+
+import Cycle from '@cycle/core';
+import {div, pre, makeDOMDriver} from '@cycle/dom';
+
+function main(sources) {
+  const sinks = {
+    DOM: trainStationInfo
+      .map(info =>
+        div([
+          pre(JSON.stringify(info.station))
+        ]))
+  };
+  return sinks;
+}
+
+Cycle.run(main, { DOM: makeDOMDriver('#container') });
