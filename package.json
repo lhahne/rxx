@@ -4,7 +4,8 @@
   "description": "simple demonstration of lodash vs rx vs bacon",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "browserify front.js -o public/bundle.js -t [ babelify --presets [ es2015 ] ]"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,10 @@
   },
   "homepage": "https://github.com/lhahne/rxx#readme",
   "dependencies": {
+    "@cycle/core": "^6.0.2",
+    "@cycle/dom": "^9.0.2",
     "baconjs": "^0.7.83",
+    "browserify": "^13.0.0",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.2.1",
     "rx": "^4.0.7"
