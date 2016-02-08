@@ -16,6 +16,13 @@ const l = _.chain(list1)
 
 console.log(l)
 
+const fromArray = rx.Observable.from
+
+fromArray(list1)
+  .map(v => 2 * v)
+  .zip(fromArray(list2.concat(list2)), (x, y) => x + y)
+  .subscribe(f => console.log(f))
+
 const fromPromise = rx.Observable.fromPromise
 
 const station = 'HKI'
